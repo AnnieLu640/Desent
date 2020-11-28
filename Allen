@@ -1,0 +1,313 @@
+from tkinter import *
+
+
+class basedesk():
+    def __init__(self, master):
+        self.root = master
+        self.root.config()
+        self.root.title("Dear Mr.Li")
+        self.root.geometry("500x450")
+        initface(self.root)
+
+
+class initface():
+    def __init__(self, master):
+        self.master = master
+        self.master.config()
+        self.initface = Frame(self.master)
+        self.initface.pack()
+
+        self.photo = PhotoImage(file='corgi.gif')  # 注意这个照片要gif格式，和py文件同一文件夹
+        logo = Button(self.initface, image=self.photo,
+                      cursor='heart', command=self.change)
+
+        label0 = Label(self.initface, text='亲爱的李先生❤ 生日快乐❤！',
+                       bg='#fae3d9', fg='#1e2022',
+                       font='TIMES 25 bold',
+                       cursor='star')
+
+        label1 = Label(self.initface, text='账号',
+                       bg='#fae3d9', fg='#1e2022',
+                       width=4,
+                       font='宋体 18 bold',
+                       cursor='star')
+
+        label2 = Label(self.initface, text='密码',
+                       bg='#fae3d9', fg='#1e2022',
+                       width=4,
+                       font='宋体 18 bold',
+                       cursor='star')
+
+        self.x = StringVar()
+        message1 = Entry(self.initface, textvariable=self.x, width=40)
+        self.y = StringVar()
+        message2 = Entry(self.initface, textvariable=self.y, width=40, show='*')
+
+        label0.grid(row=0, column=0, columnspan=5, padx=5, pady=10)
+        logo.grid(row=1, column=0, columnspan=5, padx=10, pady=10)
+        label1.grid(row=2, column=0, pady=10)
+        message1.grid(row=2, column=1, pady=10)
+        label2.grid(row=3, column=0, pady=0)
+        message2.grid(row=3, column=1, pady=0)
+
+    def change(self):
+        if self.x.get() == '1129' and self.y.get() == '1129':
+            self.initface.destroy()
+            face0(self.master)
+
+
+class face0():
+    def __init__(self, master):
+        self.master = master
+        self.master.config(bg='#f0f0f0')
+        self.face0 = Frame(self.master)
+        self.face0.pack()
+
+        label = Label(self.face0, text='我想过很多遍呢\n到底送什么礼物好呢?\n希望你会喜欢这一份\n独特的礼物~\n这也是我第一次的尝试\n\nTips:答对所有题目\n就可以看到生日祝福啦',  # \n是用来给你的话换行的，相当于回车键的作用
+                      bg='#bbded6', fg='#f8f3d4',
+                      font='宋体 17 bold', cursor='star',
+                      wraplength=700, justify='center',
+                      padx=50, pady=50)
+        btn = Button(self.face0, text='那我们就开始啦 激不激动啊？', command=self.back,
+                     bg="#ffb6b9", cursor='heart',
+                     font='宋体 20 bold',
+                     padx=3, pady=3)
+        label.grid(row=0, column=0, padx=20, pady=20)
+        btn.grid(row=1, column=0, pady=10)
+
+    def back(self):
+        self.face0.destroy()
+        face1(self.master)
+
+
+class face1():
+    def __init__(self, master):
+        self.master = master
+        self.master.config(bg='#f0f0f0')
+        self.face1 = Frame(self.master)
+        self.face1.pack()
+
+        label3 = Label(self.face1, text='问题1\n\n我不准你叫自己什么？\n\n对不起，本题不提供提示\n请认真作答',
+                       bg='#bbded6', fg='#f8f3d4',
+                       font='宋体 17 bold', cursor='star',
+                       wraplength=300, justify='center',
+                       padx=20, pady=20)
+        btn = Button(self.face1, text='完形填空 so easy！', command=self.back,
+                     bg="#ffb6b9", cursor='heart',
+                     font='宋体 15 bold',
+                     padx=3, pady=3)
+        self.z = StringVar()
+        message3 = Entry(self.face1, textvariable=self.z, width=20)
+
+        label3.grid(row=0, column=0, columnspan=2, padx=10, pady=30)
+        message3.grid(row=1, column=0, padx=50, pady=50)
+        btn.grid(row=1, column=1, padx=10, pady=10)
+
+    def back(self):
+        if self.z.get() == '1':
+            self.face1.destroy()
+            face2(self.master)
+
+
+class face2():
+    def __init__(self, master):
+        self.master = master
+        self.master.config(bg='#f0f0f0')
+        self.face2 = Frame(self.master)
+        self.face2.pack()
+
+        label = Label(self.face2, text='问题2\n\n我说过的哪一句话\n是对我们之间关系的展望？\n\n对不起,本题依旧不提供提示\n请认真思考',
+                      bg='#bbded6', fg='#f8f3d4',
+                      font='宋体 17 bold', cursor='star',
+                      wraplength=300, justify='center',
+                      padx=20, pady=20)
+        btn = Button(self.face2, text='依旧是送分题哦', command=self.back,
+                     bg="#ffb6b9", cursor='heart',
+                     font='宋体 15 bold',
+                     padx=3, pady=3)
+        self.a = StringVar()
+        message3 = Entry(self.face2, textvariable=self.a, width=20)
+
+        label.grid(row=0, column=0, columnspan=2, padx=10, pady=30)
+        message3.grid(row=1, column=0, padx=10, pady=10)
+        btn.grid(row=1, column=1, padx=10, pady=10)
+
+    def back(self):
+        if self.a.get() == '2':
+            self.face2.destroy()
+            face3(self.master)
+
+
+class face3():
+    def __init__(self, master):
+        self.master = master
+        self.master.config(bg='#f0f0f0')
+        self.face3 = Frame(self.master)
+        self.face3.pack()
+
+        label = Label(self.face3, text='问题3\n\n对方情绪低落的时候\n我们可以做什么去帮到对方?\n\n开放性问题酌情给你点提示\n只有4个字啦',
+                      bg='#bbded6', fg='#f8f3d4',
+                      font='宋体 17 bold', cursor='star',
+                      wraplength=300, justify='center',
+                      padx=20, pady=20)
+        btn = Button(self.face3, text='开始难度增大了哦', command=self.back,
+                     bg="#ffb6b9", cursor='heart',
+                     font='宋体 15 bold',
+                     padx=3, pady=3)
+        self.a = StringVar()
+        message3 = Entry(self.face3, textvariable=self.a, width=20)
+
+        label.grid(row=0, column=0, columnspan=2, padx=10, pady=30)
+        message3.grid(row=1, column=0, padx=10, pady=10)
+        btn.grid(row=1, column=1, padx=10, pady=10)
+
+    def back(self):
+        if self.a.get() == '3':
+            self.face3.destroy()
+            face4(self.master)
+
+
+class face4():
+    def __init__(self, master):
+        self.master = master
+        self.master.config(bg='#f0f0f0')
+        self.face4 = Frame(self.master)
+        self.face4.pack()
+
+        label = Label(self.face4, text='问题4\n\n我不希望/杜绝哪种交流方式？\n\n不好意思,本题无提示\n仔细想想看是啥呢?',
+                      bg='#bbded6', fg='#f8f3d4',
+                      font='宋体 17 bold', cursor='star',
+                      wraplength=300, justify='center',
+                      padx=20, pady=20)
+        btn = Button(self.face4, text='答案只有两个字啦', command=self.back,
+                     bg="#ffb6b9", cursor='heart',
+                     font='宋体 15 bold',
+                     padx=3, pady=3)
+        self.a = StringVar()
+        message3 = Entry(self.face4, textvariable=self.a, width=20)
+
+        label.grid(row=0, column=0, columnspan=2, padx=10, pady=30)
+        message3.grid(row=1, column=0, padx=10, pady=10)
+        btn.grid(row=1, column=1, padx=10, pady=10)
+
+    def back(self):
+        if self.a.get() == '4':
+            self.face4.destroy()
+            face5(self.master)
+
+
+class face5():
+    def __init__(self, master):
+        self.master = master
+        self.master.config(bg='#f0f0f0')
+        self.face5 = Frame(self.master)
+        self.face5.pack()
+
+        label = Label(self.face5, text='问题5\n\n为什么喜欢我？\n\n你要是答不出来的话...\n那就挺尴尬的\n哈哈哈哈哈',
+                      bg='#bbded6', fg='#f8f3d4',
+                      font='宋体 17 bold', cursor='star',
+                      wraplength=300, justify='center',
+                      padx=20, pady=20)
+        btn = Button(self.face5, text='小意思~难不倒你', command=self.back,
+                     bg="#ffb6b9", cursor='heart',
+                     font='宋体 15 bold',
+                     padx=3, pady=3)
+        self.a = StringVar()
+        message3 = Entry(self.face5, textvariable=self.a, width=20)
+
+        label.grid(row=0, column=0, columnspan=2, padx=10, pady=30)
+        message3.grid(row=1, column=0, padx=10, pady=10)
+        btn.grid(row=1, column=1, padx=10, pady=10)
+
+    def back(self):
+        if self.a.get() == '5':
+            self.face5.destroy()
+            face6(self.master)
+
+
+class face6():
+    def __init__(self, master):
+        self.master = master
+        self.master.config(bg='#f0f0f0')
+        self.face6 = Frame(self.master)
+        self.face6.pack()
+
+        label = Label(self.face6, text='问题6\n\n我们是哪一天认识的？\n\n你看我对你多好啊\n多手下留情啊,又一送分题啊',
+                      bg='#bbded6', fg='#f8f3d4',
+                      font='宋体 17 bold', cursor='star',
+                      wraplength=300, justify='center',
+                      padx=20, pady=20)
+        btn = Button(self.face6, text='请输入mm/dd/yyyy格式', command=self.back,
+                     bg="#ffb6b9", cursor='heart',
+                     font='宋体 15 bold',
+                     padx=3, pady=3)
+        self.a = StringVar()
+        message3 = Entry(self.face6, textvariable=self.a, width=20)
+
+        label.grid(row=0, column=0, columnspan=2, padx=10, pady=30)
+        message3.grid(row=1, column=0, padx=10, pady=10)
+        btn.grid(row=1, column=1, padx=10, pady=10)
+
+    def back(self):
+        if self.a.get() == '6':
+            self.face6.destroy()
+            face7(self.master)
+
+
+class face7():
+    def __init__(self, master):
+        self.master = master
+        self.master.config(bg='#f0f0f0')
+        self.face7 = Frame(self.master)
+        self.face7.pack()
+
+        label = Label(self.face7, text='问题7\n\n最后的最后啦\n恭喜你!来到最后一关啦！\n\n你想对我说些什么吗？\n\n哈哈哈\n自由答题 不必拘束',
+                      bg='#bbded6', fg='#f8f3d4',
+                      font='宋体 17 bold', cursor='star',
+                      wraplength=300, justify='center',
+                      padx=20, pady=20)
+        btn = Button(self.face7, text='没关系,错了重来呗\n\n坚持啊\n希望的曙光马上就来了', command=self.back,
+                     bg="#ffb6b9", cursor='heart',
+                     font='宋体 15 bold',
+                     padx=3, pady=3)
+        self.a = StringVar()
+        message3 = Entry(self.face7, textvariable=self.a, width=20)
+
+        label.grid(row=0, column=0, columnspan=2, padx=10, pady=30)
+        message3.grid(row=1, column=0, padx=10, pady=10)
+        btn.grid(row=1, column=1, padx=10, pady=10)
+
+    def back(self):
+        if self.a.get() == '7':
+            self.face7.destroy()
+            face8(self.master)
+
+
+class face8():
+    def __init__(self, master):
+        self.master = master
+        self.master.config(bg='#ff99ff')
+        self.face8 = Frame(self.master)
+        self.face8.pack()
+
+        label = Label(self.face8, text='傻瓜 你怎么这么久才答出来啦\n黄花菜都要凉了 \n啧啧..还不够聪明哦\n生日是很重要的事\n当然要过啊\n\n至于祝福嘛.....\n哈哈哈哈哈\n还是那句话啦\n\n李先生要健健康康长命百岁\n你要慢慢陪我走下去啊❤',
+                      bg='#bbded6', fg='#000000',
+                      font='宋体 17 bold', cursor='star',
+                      wraplength=350, justify='center',
+                      padx=20, pady=20)
+        btn = Button(self.face8, text='过瘾不？\n要不要再来一遍？', command=self.back,
+                     bg="#ff6666", cursor='heart',
+                     font='宋体 15 bold',
+                     padx=3, pady=3)
+        label.grid(row=0, column=0, padx=10, pady=20)
+        btn.grid(row=1, column=0, pady=10)
+
+    def back(self):
+        self.face8.destroy()
+        initface(self.master)
+
+
+if __name__ == '__main__':
+    root = Tk()
+    basedesk(root)
+    root.mainloop()
